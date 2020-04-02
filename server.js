@@ -5,7 +5,7 @@ const userRouter = require('./api/user.js');
 let app = express();
 app.use(bodyParser.json());
 
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 
 const PORT = process.env.PORT || 3000;
 
