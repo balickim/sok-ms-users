@@ -1,7 +1,7 @@
 BEGIN;
 
 create table users (
-	userid INT PRIMARY KEY,
+	userid SERIAL PRIMARY KEY,
 	name VARCHAR(50),
 	surname VARCHAR(50),
 	groupid INT
