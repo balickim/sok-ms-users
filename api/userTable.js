@@ -30,11 +30,13 @@ class UserTable {
         });
     }
 
-    static getUsers({ howMany, fromRecord }) {
+    static getUsers({ limit, offset, groupid }) {
         return new Promise((resolve, reject) => {
             pool.query(
-                `SELECT * from users LIMIT $1 OFFSET $2`,
-                [howMany, fromRecord],
+                `SELECT * from users
+                WHERE groupid = $3
+                LIMIT $1 OFFSET $2`,
+                [limit, offset, groupid],
                 (error, response) => {
                     if (error) return reject(error);
 
