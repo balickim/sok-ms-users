@@ -15,7 +15,7 @@ class UserTable {
         });
     }
 
-    static getUser(name, surname, groupid) {
+    static getUser({ name, surname, groupid }) {
         return new Promise((resolve, reject) => {
             pool.query(
                 `SELECT * from users 
@@ -57,6 +57,39 @@ class UserTable {
                     resolve(response.rows);
                 }
             )
+        });
+    }
+
+    static updateUser({ userid, name, surname, groupid }) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `UPDATE users
+                SET name = $1,
+                    surname = $2,
+                    groupid = $3
+                WHERE
+                userid = $4;`,
+                [name, surname, groupid, userid],
+                (error, response) => {
+                    if (error) return reject(error);
+
+                    resolve();
+                }
+            );
+        });
+    }
+
+    static deleteUser({ userid }) {
+        return new Promise((resolve, reject) => {
+            pool.query(
+                `DELETE from users WHERE userid = $1;`,
+                [userid],
+                (error, response) => {
+                    if (error) return reject(error);
+
+                    resolve();
+                }
+            );
         });
     }
 }
