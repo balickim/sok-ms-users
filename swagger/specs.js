@@ -5,7 +5,7 @@ const options = {
         info: {
             description: 'microservice for managing users',
             swagger: '2.0',
-            title: 'Users - Zawodnicy',
+            title: 'Users - nodejs',
             version: '0.6.0',
             contact: {
                 "email": "michal.balicki@onet.pl"
